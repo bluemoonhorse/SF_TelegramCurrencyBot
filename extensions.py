@@ -3,8 +3,10 @@ import json
 from config import KEYS, CRYPTO_API
 class ConvertionException(Exception):
     pass
-
-
+class NegativeValue(Exception):
+    pass
+class NotNumber(Exception):
+    pass
 #Для отправки запросов к API описать класс со статическим методом get_price(),
 #который принимает три аргумента: имя валюты, цену на которую надо узнать, — base, имя валюты,
 #цену в которой надо узнать, — quote, количество переводимой валюты — amount и возвращает нужную сумму в валюте.+
@@ -23,3 +25,10 @@ class CryptoConverter(Exception):
         # text2 = json.loads(r2.content)[quote]
         # bot.reply_to(message, text2)
         return total_base * float(amount)
+
+def is_float(string):
+    try:
+        float(string)
+        return True
+    except ValueError:
+        return False
