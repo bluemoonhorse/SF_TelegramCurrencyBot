@@ -47,7 +47,9 @@ def convert(message: telebot.types.Message):
 
     ticker1, ticker2, amount = message.text.split(" ")
     r = requests.get(f'https://min-api.cryptocompare.com/data/price?fsym={KEYS[ticker1]}&tsyms={KEYS[ticker2]}&api_key={CRYPTO_API}')
-    text = json.loads(r.content)[KEYS[ticker2]]
+    total_base = json.loads(r.content)[KEYS[ticker2]]
+
+    text = f'Price of {amount} {ticker1} in {ticker2} : {total_base*float(amount)}'
     bot.reply_to(message, text)
     #альтернатива на будущее
     #r2 = requests.get(f'https://min-api.cryptocompare.com/data/price?fsym={ticker1}&tsyms={ticker2}&api_key={CRYPTO_API}')
