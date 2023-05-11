@@ -4,6 +4,12 @@ from config import KEYS, CRYPTO_API
 class ConvertionException(Exception):
     pass
 
+
+#Для отправки запросов к API описать класс со статическим методом get_price(),
+#который принимает три аргумента: имя валюты, цену на которую надо узнать, — base, имя валюты,
+#цену в которой надо узнать, — quote, количество переводимой валюты — amount и возвращает нужную сумму в валюте.+
+
+# в скринкасте было лучше
 class CryptoConverter(Exception):
     @staticmethod
     def get_price(base: str, quote: str, amount: float):
