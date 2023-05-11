@@ -34,6 +34,10 @@ def convert(message: telebot.types.Message):
             raise ConvertionException("I need 3 parameters")
         base, quote, amount = values
 
+        #для случаев usd Usd uSd:
+        base = base.upper()
+        quote = quote.upper()
+
 
         if float(amount) <= 0:
             # подскажите как захватывать error message в try-except-raise("say stuff") через класс  😭😭😭😭😭
