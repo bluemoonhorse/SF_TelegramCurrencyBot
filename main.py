@@ -44,7 +44,7 @@ def get_values(message):
 
 @bot.message_handler(content_types=['text', ])
 def convert(message: telebot.types.Message):
-
+    ###
     ticker1, ticker2, amount = message.text.split(" ")
     r = requests.get(f'https://min-api.cryptocompare.com/data/price?fsym={KEYS[ticker1]}&tsyms={KEYS[ticker2]}&api_key={CRYPTO_API}')
     total_base = json.loads(r.content)[KEYS[ticker2]]
